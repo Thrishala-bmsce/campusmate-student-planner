@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CampusMate | Student Planner</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="#">CampusMate <span>🎓</span></a>
+        <span class="tagline">Your student life, organized.</span>
+    </header>
+
+    <main class="container">
+        <section class="welcome">
+            <div>
+                <p class="eyebrow">YOUR PERSONAL STUDY SPACE</p>
+                <h1>Make today count ✨</h1>
+                <p>Plan your tasks, meet your deadlines, and celebrate your progress.</p>
+            </div>
+            <div class="welcome-icon">📚</div>
+        </section>
+
+        <section class="stats" aria-label="Task statistics">
+            <article class="stat-card">
+                <span class="stat-icon">📋</span>
+                <p>Total tasks</p>
+                <h2 id="totalCount">0</h2>
+            </article>
+            <article class="stat-card">
+                <span class="stat-icon">✅</span>
+                <p>Completed</p>
+                <h2 id="completedCount">0</h2>
+            </article>
+            <article class="stat-card">
+                <span class="stat-icon">⏳</span>
+                <p>Pending</p>
+                <h2 id="pendingCount">0</h2>
+            </article>
+            <article class="stat-card">
+                <span class="stat-icon">📈</span>
+                <p>Progress</p>
+                <h2 id="progressCount">0%</h2>
+            </article>
+        </section>
+
+        <section class="progress-panel">
+            <div class="progress-label">
+                <span>Your overall progress</span>
+                <span id="progressLabel">0% completed</span>
+            </div>
+            <div class="progress-track">
+                <div id="progressBar" class="progress-bar"></div>
+            </div>
+        </section>
+
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">STAY ON TRACK</p>
+                <h2>My study tasks</h2>
+            </div>
+        </div>
+
+        <section class="panel form-panel">
+            <h3 id="formTitle">Add a new task</h3>
+            <form id="taskForm">
+                <input type="hidden" id="taskId">
+
+                <div class="form-grid">
+                    <label>
+                        Task name *
+                        <input id="taskTitle" type="text"
+                            placeholder="e.g. Prepare DBMS notes"
+                            maxlength="100" required>
+                    </label>
+
+                    <label>
+                        Subject *
+                        <input id="taskSubject" type="text"
+                            placeholder="e.g. DBMS"
+                            maxlength="60" required>
+                    </label>
+
+                    <label>
+                        Deadline *
+                        <input id="taskDeadline" type="date" required>
+                    </label>
+
+                    <label>
+                        Priority
+                        <select id="taskPriority">
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                            <option value="Low">Low</option>
+                        </select>
+                    </label>
+                </div>
+
+                <div class="form-actions">
+                    <button id="submitButton" class="primary-btn" type="submit">
+                        + Add task
+                    </button>
+                    <button id="cancelEdit" class="secondary-btn hidden"
+                        type="button">Cancel edit</button>
+                </div>
+                <p id="formMessage" class="message" role="status"></p>
+            </form>
+        </section>
+
+        <section class="panel task-panel">
+            <div class="task-toolbar">
+                <input id="searchInput" type="search"
+                    placeholder="Search tasks or subjects..."
+                    aria-label="Search tasks">
+                <select id="filterStatus" aria-label="Filter by status">
+                    <option value="All">All tasks</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Completed">Completed</option>
+                </select>
+                <select id="filterPriority" aria-label="Filter by priority">
+                    <option value="All">All priorities</option>
+                    <option value="High">High priority</option>
+                    <option value="Medium">Medium priority</option>
+                    <option value="Low">Low priority</option>
+                </select>
+            </div>
+
+            <div id="taskList" class="task-list"></div>
+            <p id="emptyMessage" class="empty-message">
+                No tasks yet. Add your first study task above! 💜
+            </p>
+        </section>
+
+        <footer>
+            <p>Made with 💜 for students · CampusMate</p>
+            <button id="clearCompleted" class="text-btn" type="button">
+                Clear completed tasks
+            </button>
+        </footer>
+    </main>
+</body>
+</html>
